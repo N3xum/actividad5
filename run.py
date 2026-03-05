@@ -4,6 +4,9 @@ from app.models import User
 app = create_app()
 
 if __name__ == "__main__":
+    # CAMBIO: Se comentó todo este bloque porque Flask-Migrate ahora se encarga de las tablas.
+    # Si se deja activo, dará error al intentar buscar tablas que aún no están migradas.
+    '''
     with app.app_context():
         db.create_all()
         if not User.query.filter_by(username="admin").first():
@@ -11,4 +14,5 @@ if __name__ == "__main__":
             usuario.set_password('1234')
             db.session.add(usuario)
             db.session.commit()
+    '''
     app.run(debug=True)
